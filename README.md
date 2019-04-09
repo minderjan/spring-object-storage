@@ -1,7 +1,8 @@
 # Spring Content Storage with Cloud Foundry
 
 ![Spring Content Architecture](https://paulcwarren.github.io/spring-content/spring-content-arch.jpg)
-src - https://paulcwarren.github.io/spring-content/spring-content-arch.jpg
+
+https://paulcwarren.github.io/spring-content/spring-content-arch.jpg
 
 ## Dependencies
 ```
