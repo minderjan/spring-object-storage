@@ -1,0 +1,11 @@
+applications:
+- name: spring-object-storage
+  instances: 1
+  host: s3-storage
+  domain: app.domain.com
+  memory: 1024M
+  path: build/libs/spring-object-storage-1.0.jar
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+  services:
+    - storage

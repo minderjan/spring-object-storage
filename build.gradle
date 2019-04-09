@@ -1,0 +1,70 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'ch.zrhdev.springobjectstorage'
+version = '1.0'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+    // tag::jetty[]
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    // end::jetty[]
+
+    // tag::cloud[]
+    compile("com.github.paulcwarren:content-s3-spring-boot-starter:0.0.11")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    // end::cloud{}
+
+    // tag::json[]
+    compile("com.fasterxml.jackson.core:jackson-databind:2.9.5")
+    // end:json{}
+
+    compile("com.h2database:h2")
+
+    // tag::monitoring[]
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    // end::monitoring[]
+
+    // tag::logging[]
+    compile("org.springframework.boot:spring-boot-starter-logging")
+    // end::logging[]
+
+    // tag::lombok[]
+    compileOnly "org.projectlombok:lombok:1.18.4"
+    annotationProcessor 'org.projectlombok:lombok:1.18.4'
+    // end::lombok[]
+
+    // tag::swagger[]
+    compile("io.springfox:springfox-swagger2:2.8.0")
+    compile("io.springfox:springfox-swagger-ui:2.8.0")
+    // end::swagger[]
+
+    // tag:testing{}
+    //testCompile("junit:junit")
+    testCompile("junit:junit")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("org.springframework.security:spring-security-test")
+    // end:testing[]
+}
